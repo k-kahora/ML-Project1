@@ -27,6 +27,6 @@ To set up the virtual environment and install the required packages, follow thes
    ```bash
    git clone https://github.com/k-kahora/ML-Project1
    cd ML-Project1
-   pip install -r requirements.txt # Install the requirements
+   python tic_tac_toe.py
 
    ```
