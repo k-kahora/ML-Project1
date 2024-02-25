@@ -19,6 +19,7 @@
             pkgs.nodePackages.pyright
             # pkgs.python3Packages.pandas
             pkgs.python3Packages.matplotlib
+            pkgs.python3Packages.black # auto formatter
             pkgs.python3Packages.numpy
             # pkgs.python3Packages.scikit-learn
             pkgs.python3Packages.venvShellHook
