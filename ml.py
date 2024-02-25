@@ -33,6 +33,7 @@ def compute_features(board):
         0,  # - Number of rows, columns, diagonals with 2 'O' and 1 empty space
         0,  # - Center control
         0,  # - Winning moves available
+        0,  # - Corner move and center move
     ]  # [winning_opportunities_for_X, block_opportunities_against_O]
     winning_lines = [
         [1, 2, 3],
@@ -60,6 +61,8 @@ def compute_features(board):
         if O_count == 2 and Empty_count == 1:
             features[1] += 1
     features[2] = 1 if board[1][1] == "X" else 0
+    X_in_corner = 'X' in [board[0][0],board[1][0],board[0][2],board[2][2]] 
+    features[4] = 1 if board[1][1] == "X" and X_in_corner else 0
 
     return features
 

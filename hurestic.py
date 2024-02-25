@@ -2,7 +2,7 @@
 # huerstic.py
 from typing import DefaultDict, Set
 
-from tic_tac_toe import calculate_position
+from tic_tac_toe_ai import calculate_position
 
 
 def evaluate_board(board, symbol):
