@@ -16,7 +16,6 @@ class TicTacToeAi:
 7 | 8 | 9
 """
     def alternate_player(self):
-        self.xTurn = not self.xTurn
         return 'X' if self.xTurn else 'O'
 
     def calculate_draw(self):
@@ -29,6 +28,7 @@ class TicTacToeAi:
             assert "In valid move"
         else:
             self.board[row][col] = self.alternate_player()
+            self.xTurn = not self.xTurn
     
 
     def calculate_winner(self):
@@ -52,13 +52,4 @@ class TicTacToeAi:
             row_ = list(map(lambda a: ' ' if a == None else a,row))
             print("|{0}|{1}|{2}|".format(row_[0], row_[1], row_[2]))
 
-class AIPlayer:
-    def __init__(self, learning=False):
-        # Initialize AI player, with optional learning capability
-        pass
-    
-    def choose_move(self, board):
-        # Implement move choice logic here
-        pass
-# Other necessary classes/functions...
 
