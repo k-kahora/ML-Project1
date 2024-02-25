@@ -3,9 +3,6 @@
 from hurestic import choose_best_move
 import tic_tac_toe_ai
 from tic_tac_toe_ai import calculate_position
-import importlib
-
-importlib.reload(tic_tac_toe_ai)  # Step 3: Reload the module
 
 
 def choose_move(board, weights):
@@ -17,14 +14,12 @@ def choose_move(board, weights):
         if board[i][j] is None:  # Check if the position is empty
             board[i][j] = "X"  # Temporarily make the move
             score = evaluate_board(board, weights)
-            print(pos)
             board[i][j] = None  # Undo the move
 
             if score > best_score:
                 best_score = score
                 best_move = pos
 
-    print("Best move: ", best_move)
     return best_move
 
 
@@ -66,7 +61,6 @@ def compute_features(board):
             features[1] += 1
     features[2] = 1 if board[1][1] == "X" else 0
 
-    print(f"Feature score: {features} -> Move: ", end="")
     return features
 
 
@@ -74,7 +68,6 @@ def compute_features(board):
 def evaluate_board(board, weights):
     features = compute_features(board)
     value = sum(weight * feature for weight, feature in zip(weights, features))
-    print("Valule -> ", value)
     return value
 
 
@@ -102,19 +95,13 @@ def play_game(weights):
     game = tic_tac_toe_ai.TicTacToeAi()
     while True:
         current_player = "X" if game.xTurn else "O"
-        match current_player:
-            case "X":
-                # TODO make the ai playe here
-                i, j = tic_tac_toe_ai.calculate_position(
-                    choose_move(game.board, weights)
-                )
-                game.make_move(i, j)
-            case "O":
-                i_ai, j_ai = choose_best_move(game.board, "X")
-                game.make_move(i_ai, j_ai)
-                game.print_board()
-            case _:
-                assert "Error"
+        if (current_player == "X"):
+            i, j = tic_tac_toe_ai.calculate_position(choose_move(game.board, weights))
+            game.make_move(i, j)
+        elif (current_player == "O"):
+            i_ai, j_ai = choose_best_move(game.board, "X")
+            game.make_move(i_ai, j_ai)
+            game.print_board()
         if game.calculate_draw():
             return "draw"
         if game.calculate_winner():
@@ -131,6 +118,8 @@ def train_system(number_of_games):
         outcome = play_game(weights)
         weights = update_weights(weights, outcome, learning_rate)
         results[outcome] += 1
+        print(weights)
+    
     return results, weights
 
 
