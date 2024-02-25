@@ -3,7 +3,6 @@
 def calculate_position(pos):
     return (pos - 1) // 3, (pos - 1) % 3
 
-
 class TicTacToe:
     def __init__(self):
         # Initialize the board, players, etc.
@@ -42,7 +41,6 @@ class TicTacToe:
                 print("Not a valid input")
                 continue
             row,col = calculate_position(user_input)
-
             self.board[row][col] = 'X' if xTurn else 'O' 
             winner = self.calculate_winner()
             if (winner):
@@ -64,7 +62,6 @@ class AIPlayer:
     def choose_move(self, board):
         # Implement move choice logic here
         pass
-
 # Other necessary classes/functions...
 
 if __name__ == "__main__":
