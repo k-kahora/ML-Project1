@@ -33,7 +33,9 @@ def compute_features(board):
         0,  # - Number of rows, columns, diagonals with 2 'O' and 1 empty space
         0,  # - Center control
         0,  # - Winning moves available
+        0,  # - Corner move and center move
     ]  # [winning_opportunities_for_X, block_opportunities_against_O]
+    # Put x into 3 corners is solid
     winning_lines = [
         [1, 2, 3],
         [4, 5, 6],
@@ -60,6 +62,8 @@ def compute_features(board):
         if O_count == 2 and Empty_count == 1:
             features[1] += 1
     features[2] = 1 if board[1][1] == "X" else 0
+    X_in_corner = 'X' in [board[0][0],board[1][0],board[0][2],board[2][2]] 
+    features[4] = 1 if board[1][1] == "X" and X_in_corner else 0
 
     return features
 
@@ -72,7 +76,7 @@ def evaluate_board(board, weights):
 
 
 def initialize_weights():
-    return [0.1, 0.1, 0.1, 1]
+    return [0.1, 0.1, 0.1, 0.1, 0.1]
 
 
 def initialize_board():
@@ -111,7 +115,7 @@ def play_game(weights):
 # Training loop
 # AI learner is always X
 def train_system(number_of_games):
-    learning_rate = 0.5
+    learning_rate = 2
     results = {"win": 0, "loss": 0, "draw": 0}
     weights = initialize_weights()
     for _ in range(number_of_games):
