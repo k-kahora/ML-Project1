@@ -51,7 +51,8 @@ class TicTacToe:
                 return "draw"
             # Check for winner
             if (winner):
-                return "win" if winner == 'X' else 'loss'
+                print('Winner is: ', winner)
+                return winner
             xTurn = not xTurn
             self.print_board()
     def print_board(self):

@@ -25,7 +25,6 @@ def evaluate_board(board, symbol):
         
     for combo in winning_combos:
         symbols = [board[row][col] for pos in combo for row, col in [calculate_position(pos)]]
-        print(symbols)
         if symbols.count(opponent_symbol) == 2 and symbols.count(None) == 1:
             opp_score += 1
         elif symbols.count(symbol) == 2 and symbols.count(None) == 1:
@@ -54,9 +53,6 @@ def choose_best_move(board, symbol):
     return best_move
 
 test_board = [['O', 'O', None ], [None, 'O', 'X'], [None, None, 'X'], ]
-print("Eval:",evaluate_board(test_board,'X'))
-print("Best Move:",choose_best_move(test_board,'X'))
-print(test_board)
 
 def opponent_turn(board, symbol):
     """

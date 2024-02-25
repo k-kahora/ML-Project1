@@ -3,7 +3,7 @@
 def calculate_position(pos):
     return (pos - 1) // 3, (pos - 1) % 3
 
-class TicTacToe:
+class TicTacToeAi:
     def __init__(self):
         # Initialize the board, players, etc.
         self.xTurn = True
@@ -19,17 +19,20 @@ class TicTacToe:
         self.xTurn = not self.xTurn
         return 'X' if self.xTurn else 'O'
 
+    def calculate_draw(self):
+        return all(all(col is not None for col in row) for row in self.board)
+
     def reset_board(self):
         self.board = [[None, None, None ], [None, None, None], [None, None, None], ]
     def make_move(self, row, col):
+        print(row,col)
         if (row < 0 or row > 2 or col < 0 or col > 2 or self.board[row][col] != None):
-            self.board[row][col] = self.alternate_player()
-        else:
+            print('In valid move')
             assert "In valid move"
+        else:
+            self.board[row][col] = self.alternate_player()
         self.print_board()
     
-    def calculate_draw(self):
-        return all(all(col is not None for col in row) for row in self.board)
 
     def calculate_winner(self):
         lines = [[1,2,3],[4,5,6],[7,8,9],[1,4,7],[2,5,8],[3,6,9],[1,5,9],[3,5,7]]
@@ -40,7 +43,7 @@ class TicTacToe:
             c_row, c_col = c
             if (self.board[a_row][a_col] and self.board[a_row][a_col] == self.board[b_row][b_col] and self.board[a_row][a_col] == self.board[c_row][c_col]):
                 return self.board[a_row][a_col]
-        return None
+        return False
 
 		# if (self.board[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
 		# 	return squares[a];
@@ -48,7 +51,6 @@ class TicTacToe:
 
     
     def print_board(self):
-        print(self.positions)
         for row in self.board:
             row_ = list(map(lambda a: ' ' if a == None else a,row))
             print("|{0}|{1}|{2}|".format(row_[0], row_[1], row_[2]))
