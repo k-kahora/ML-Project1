@@ -25,13 +25,10 @@ class TicTacToeAi:
     def reset_board(self):
         self.board = [[None, None, None ], [None, None, None], [None, None, None], ]
     def make_move(self, row, col):
-        print(row,col)
         if (row < 0 or row > 2 or col < 0 or col > 2 or self.board[row][col] != None):
-            print('In valid move')
             assert "In valid move"
         else:
             self.board[row][col] = self.alternate_player()
-        self.print_board()
     
 
     def calculate_winner(self):
