@@ -28,6 +28,6 @@ To set up the virtual environment and install the required packages, follow thes
    git clone https://github.com/k-kahora/ML-Project1
    cd ML-Project1
    python -i ml.py
-   >>> trains_system(100)
+   >>> train_system(100)
    ```
 
