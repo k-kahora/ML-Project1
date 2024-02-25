@@ -14,7 +14,8 @@ class TicTacToe:
 ---------
 7 | 8 | 9
 """
-        pass
+    def reset_board(self):
+        self.board = [[None, None, None ], [None, None, None], [None, None, None], ]
     
     def calculate_winner(self):
         lines = [[1,2,3],[4,5,6],[7,8,9],[1,4,7],[2,5,8],[3,6,9],[1,5,9],[3,5,7]]
@@ -37,15 +38,20 @@ class TicTacToe:
         xTurn = False
         while True:
             user_input = int(input("Enter a board number to play"))
-            if user_input < 1 or user_input > 9:
+            row,col = calculate_position(user_input)
+            if (row < 0 or row > 2 or col < 0 or col > 2 or self.board[row][col] != None):
                 print("Not a valid input")
                 continue
-            row,col = calculate_position(user_input)
             self.board[row][col] = 'X' if xTurn else 'O' 
             winner = self.calculate_winner()
+            # Check for draw
+            draw = all(all(col is not None for col in row) for row in self.board)
+            if (draw):
+                print('Draw')
+                return "draw"
+            # Check for winner
             if (winner):
-                print("Winner: {0}".format(winner))
-                return
+                return "win" if winner == 'X' else 'loss'
             xTurn = not xTurn
             self.print_board()
     def print_board(self):
@@ -63,6 +69,12 @@ class AIPlayer:
         # Implement move choice logic here
         pass
 # Other necessary classes/functions...
+
+def play_game():
+    x = TicTacToe()
+    x.print_board()
+    print(x.play_game())
+    x.reset_board()
 
 if __name__ == "__main__":
     # Command line interface to run the game
