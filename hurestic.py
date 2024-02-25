@@ -57,3 +57,13 @@ test_board = [['O', 'O', None ], [None, 'O', 'X'], [None, None, 'X'], ]
 print("Eval:",evaluate_board(test_board,'X'))
 print("Best Move:",choose_best_move(test_board,'X'))
 print(test_board)
+
+def opponent_turn(board, symbol):
+    """
+    Perform the opponent's turn.
+    """
+    i, j = choose_best_move(board, symbol)
+    if i is not None and j is not None:
+        board[i][j] = symbol
+        return True  # Move was made
+    return False  # No move made (board is full)
