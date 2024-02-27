@@ -1,11 +1,19 @@
 *I will have to go shortly, but I will continue this after - Haadi*
+*Seperated response lines for now to make it easier to read. Can change back when finished*
 
 Responses to the following questions:
 • What was easy about this assignment?
-The easiest part of this assignment was most definitely getting the basic tic-tac-toe layout. Making the decision to print to the terminal or make a gui was easy, as was printing out the basic tic-tac-toe as needed (without the algorithm implemented yet).
+The easiest part of this assignment was most definitely getting the basic tic-tac-toe layout. Making the decision to print to the terminal or make a gui was easy, as was
+printing out the basic tic-tac-toe as needed (without the algorithm implemented yet). It was also easy (read: easier) to implent the AI with fixed moves as opposed to the
+AI that learned through the different games.
 
+*Can edit the "you couldn't get working" part during the Tuesday meeting*
 • What was challenging about this assignment, or parts that you couldn’t get working correctly?
-To be answered
+It was challenging to get the learning AI to respond to the fixed AI correctly. That is to say, in a manner where it would correctly learn through the games that it plays
+and would start iincreasing the win-loss-tie ratio (leaning towards win). Also, there was an idea floated around of a potential "cheat code" in tic-tac-toe that would
+guarantee the win (if not tie) of the player who made the first move. But implementing that seemed to complicated for what we had to accomplish with our current knowledge.
+Along with that, we thought of including training data, like board states and credit assignment, but figured against it as we were tasked with creating a fixed AI to learn
+from.
 
 • What did you like about this assignment?
 To be answered
@@ -14,7 +22,10 @@ To be answered
 To be answered
 
 • How did your team function? Include details regarding what each team member contributed, how the team communicated with each other, and how team software development & design was accomplished.
-To be answered
+We were able to communicate with each other early on to start working out the dynamics between us. We agreed on times to meet so that we could get together and work on it,
+through in-person meetings or on zoom. We also had a group chat to talk asynchronously and and sharing/collaboration (of files) was done through a shared GitHub repository
+for real-time updates and changes that others could also observe and work with.
+Malcolm = 40%, Haadi = 30%, Ronny = 30%.
 
 • What did you learn from this assignment?
 To be answered
