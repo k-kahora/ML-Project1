@@ -1,0 +1,5 @@
+Steps to run
+1. Unzip tar.gz
+2. ./startup.sh
+3. After the AI finishes there should be a file called ai_performance_over_10000_games.png which is the graph of the current evaluation
+4. for subsequent runs you can simply type python ai.py
